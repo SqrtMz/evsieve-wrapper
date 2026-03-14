@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -7,6 +8,7 @@
 #include <QProcess>
 #include <QPushButton>
 #include <QSystemTrayIcon>
+#include <QCloseEvent>
 
 class Home : public QMainWindow {
 
@@ -16,19 +18,20 @@ class Home : public QMainWindow {
 		Home();
 		QSystemTrayIcon *tray;
 		
+	protected:
+		void closeEvent(QCloseEvent *event) override;
+		
 	private:
-	QString selected_device;
-	QMenu *file_menu;
-	QMenu *devices_menu;
-	QProcess *proc;
-	QPushButton *start_button;
-	QPushButton *stop_button;
+		QString selected_device;
+		QMenu *file_menu;
+		QMenu *devices_menu;
+		QProcess *proc;
+		QPushButton *start_button;
+		QPushButton *stop_button;
 	
 	private slots:
-	void assign_key ();
-	void reload_devices();
-	void start();
-	void stop();
-	void closeEvent(QCloseEvent *event) override;
-	void keyPressEvent(const QKeyEvent *event) override;
+		void assign_key ();
+		void reload_devices();
+		void start();
+		void stop();
 };

@@ -23,4 +23,5 @@ add_subdirectory("src")
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBEVDEV_LIBRARIES})
+
 target_include_directories(${PROJECT_NAME} PRIVATE ${LIBEVDEV_INCLUDE_DIRS})

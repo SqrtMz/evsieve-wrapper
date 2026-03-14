@@ -1,8 +1,10 @@
 #include "home.hpp"
+#include <remapper/remapper.hpp>
 #include <cstdlib>
 #include <fcntl.h>
 #include <dirent.h>
 #include <csignal>
+#include <QApplication>
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QMenuBar>
@@ -23,12 +25,15 @@ Home::Home() {
 	connect(tray_show, &QAction::triggered, this, &Home::show);
 	
 	QAction *tray_quit = tray_menu->addAction("Quit");
-	connect(tray_quit, &QAction::triggered, this, &Home::close);
+	connect(tray_quit, &QAction::triggered, this, &QApplication::quit);
+
+	tray->setContextMenu(tray_menu);
+	tray->show();
 
 	file_menu = menuBar()->addMenu("&File");
 
 	QAction *quit_action = file_menu->addAction("Quit");
-	connect(quit_action, &QAction::triggered, this, &Home::close);
+	connect(quit_action, &QAction::triggered, this, &QApplication::quit);
 
 	devices_menu = menuBar()->addMenu("&Devices");
 	connect(devices_menu, &QMenu::aboutToShow, this, &Home::reload_devices);
@@ -122,8 +127,5 @@ void Home::stop() {
 
 void Home::closeEvent(QCloseEvent *event) {
 	hide();
-}
-
-void Home::keyPressEvent(const QKeyEvent *event) {
-	qDebug() << event;
+	event->ignore();
 }
