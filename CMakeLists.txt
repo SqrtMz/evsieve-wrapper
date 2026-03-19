@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(QtTest
+project(evsieve-wrapper
 		VERSION 1.0.0
 		LANGUAGES CXX)
 
@@ -16,7 +16,7 @@ set(CMAKE_AUTORCC ON)
 
 pkg_check_modules(LIBEVDEV REQUIRED libevdev)
 
-add_executable( ${PROJECT_NAME})
+add_executable(${PROJECT_NAME})
 
 add_subdirectory("src")
 
