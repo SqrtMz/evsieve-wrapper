@@ -7,8 +7,8 @@
 int main(int argc, char* argv[]) {
     
     QApplication app(argc, argv);
-    Home* w = new Home();
-    w->show();
+    Home w;
+    w.show();
 
     return app.exec();
 }

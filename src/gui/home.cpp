@@ -48,13 +48,105 @@ Home::Home(QWidget* parent) : QMainWindow(parent) {
 	layout->addLayout(top_layout);
 
 	
-	LabelButton* btn_a = new LabelButton("A", "No key assigned");
+	LabelButton* btn_a = new LabelButton("A", "No key assigned", "south");
 	top_layout->addRow(btn_a);
 	connect(btn_a->button, &QPushButton::clicked, this, [this, btn_a](){start_key_listener(btn_a);});
 	
-	LabelButton* btn_b = new LabelButton("B", "No key assigned");
+	LabelButton* btn_b = new LabelButton("B", "No key assigned", "east");
 	top_layout->addRow(btn_b);
 	connect(btn_b->button, &QPushButton::clicked, this, [this, btn_b](){start_key_listener(btn_b);});
+
+	LabelButton* btn_x = new LabelButton("X", "No key assigned", "north");
+	top_layout->addRow(btn_x);
+	connect(btn_x->button, &QPushButton::clicked, this, [this, btn_x](){start_key_listener(btn_x);});
+
+	LabelButton* btn_y = new LabelButton("Y", "No key assigned", "west");
+	top_layout->addRow(btn_y);
+	connect(btn_y->button, &QPushButton::clicked, this, [this, btn_y](){start_key_listener(btn_y);});
+
+	LabelButton* btn_dpad_up = new LabelButton("Dpad Up", "No key assigned", "dpad_up");
+	top_layout->addRow(btn_dpad_up);
+	connect(btn_dpad_up->button, &QPushButton::clicked, this, [this, btn_dpad_up](){start_key_listener(btn_dpad_up);});
+
+	LabelButton* btn_dpad_right = new LabelButton("Dpad Right", "No key assigned", "dpad_right");
+	top_layout->addRow(btn_dpad_right);
+	connect(btn_dpad_right->button, &QPushButton::clicked, this, [this, btn_dpad_right](){start_key_listener(btn_dpad_right);});
+
+	LabelButton* btn_dpad_down= new LabelButton("Dpad Down", "No key assigned", "dpad_down");
+	top_layout->addRow(btn_dpad_down);
+	connect(btn_dpad_down->button, &QPushButton::clicked, this, [this, btn_dpad_down](){start_key_listener(btn_dpad_down);});
+
+	LabelButton* btn_dpad_left = new LabelButton("Dpad Left", "No key assigned", "dpad_left");
+	top_layout->addRow(btn_dpad_left);
+	connect(btn_dpad_left->button, &QPushButton::clicked, this, [this, btn_dpad_left](){start_key_listener(btn_dpad_left);});
+
+	LabelButton* btn_start = new LabelButton("Start", "No key assigned", "start");
+	top_layout->addRow(btn_start);
+	connect(btn_start->button, &QPushButton::clicked, this, [this, btn_start](){start_key_listener(btn_start);});
+
+	LabelButton* btn_mode = new LabelButton("Brand Button", "No key assigned", "mode");
+	top_layout->addRow(btn_mode);
+	connect(btn_mode->button, &QPushButton::clicked, this, [this, btn_mode](){start_key_listener(btn_mode);});
+
+	LabelButton* btn_select = new LabelButton("Select", "No key assigned", "select");
+	top_layout->addRow(btn_select);
+	connect(btn_select->button, &QPushButton::clicked, this, [this, btn_select](){start_key_listener(btn_select);});
+
+	LabelButton* btn_tr = new LabelButton("RB", "No key assigned", "tr");
+	top_layout->addRow(btn_tr);
+	connect(btn_tr->button, &QPushButton::clicked, this, [this, btn_tr](){start_key_listener(btn_tr);});
+
+	LabelButton* btn_tl = new LabelButton("LB", "No key assigned", "tl");
+	top_layout->addRow(btn_tl);
+	connect(btn_tl->button, &QPushButton::clicked, this, [this, btn_tl](){start_key_listener(btn_tl);});
+
+	LabelButton* btn_tr2 = new LabelButton("RT", "No key assigned", "tr2");
+	top_layout->addRow(btn_tr2);
+	connect(btn_tr2->button, &QPushButton::clicked, this, [this, btn_tr2](){start_key_listener(btn_tr2);});
+
+	LabelButton* btn_tl2 = new LabelButton("LT", "No key assigned", "tl2");
+	top_layout->addRow(btn_tl2);
+	connect(btn_tl2->button, &QPushButton::clicked, this, [this, btn_tl2](){start_key_listener(btn_tl2);});
+
+	LabelButton* btn_ljoystick_up = new LabelButton("L-Joystick Up", "No key assigned", "abs:y:-32768");
+	top_layout->addRow(btn_ljoystick_up);
+	connect(btn_ljoystick_up->button, &QPushButton::clicked, this, [this, btn_ljoystick_up](){start_key_listener(btn_ljoystick_up);});
+
+	LabelButton* btn_ljoystick_right = new LabelButton("L-Joystick Right", "No key assigned", "abs:x:32767");
+	top_layout->addRow(btn_ljoystick_right);
+	connect(btn_ljoystick_right->button, &QPushButton::clicked, this, [this, btn_ljoystick_right](){start_key_listener(btn_ljoystick_right);});
+
+	LabelButton* btn_ljoystick_down = new LabelButton("L-Joystick Down", "No key assigned", "abs:y:32767");
+	top_layout->addRow(btn_ljoystick_down);
+	connect(btn_ljoystick_down->button, &QPushButton::clicked, this, [this, btn_ljoystick_down](){start_key_listener(btn_ljoystick_down);});
+
+	LabelButton* btn_ljoystick_left = new LabelButton("L-Joystick Left", "No key assigned", "abs:x:-32768");
+	top_layout->addRow(btn_ljoystick_left);
+	connect(btn_ljoystick_left->button, &QPushButton::clicked, this, [this, btn_ljoystick_left](){start_key_listener(btn_ljoystick_left);});
+
+	LabelButton* btn_ljoystick_button = new LabelButton("L-Joystick Button", "No key assigned", "thumbl");
+	top_layout->addRow(btn_ljoystick_button);
+	connect(btn_ljoystick_button->button, &QPushButton::clicked, this, [this, btn_ljoystick_button](){start_key_listener(btn_ljoystick_button);});
+
+	LabelButton* btn_rjoystick_up = new LabelButton("R-Joystick Up", "No key assigned", "abs:ry:-32768");
+	top_layout->addRow(btn_rjoystick_up);
+	connect(btn_rjoystick_up->button, &QPushButton::clicked, this, [this, btn_rjoystick_up](){start_key_listener(btn_rjoystick_up);});
+
+	LabelButton* btn_rjoystick_right = new LabelButton("R-Joystick Right", "No key assigned", "abs:rx:32767");
+	top_layout->addRow(btn_rjoystick_right);
+	connect(btn_rjoystick_right->button, &QPushButton::clicked, this, [this, btn_rjoystick_right](){start_key_listener(btn_rjoystick_right);});
+
+	LabelButton* btn_rjoystick_down = new LabelButton("R-Joystick Down", "No key assigned", "abs:ry:32767");
+	top_layout->addRow(btn_rjoystick_down);
+	connect(btn_rjoystick_down->button, &QPushButton::clicked, this, [this, btn_rjoystick_down](){start_key_listener(btn_rjoystick_down);});
+
+	LabelButton* btn_rjoystick_left = new LabelButton("R-Joystick Left", "No key assigned", "abs:rx:-32768");
+	top_layout->addRow(btn_rjoystick_left);
+	connect(btn_rjoystick_left->button, &QPushButton::clicked, this, [this, btn_rjoystick_left](){start_key_listener(btn_rjoystick_left);});
+
+	LabelButton* btn_rjoystick_button = new LabelButton("R-Joystick Button", "No key assigned", "thumbr");
+	top_layout->addRow(btn_rjoystick_button);
+	connect(btn_rjoystick_button->button, &QPushButton::clicked, this, [this, btn_rjoystick_button](){start_key_listener(btn_rjoystick_button);});
 
 	QHBoxLayout* bottom_layout = new QHBoxLayout();
 	layout->addLayout(bottom_layout);
@@ -109,6 +201,7 @@ void Home::start_key_listener(LabelButton* lb) {
 
 	lb->button->setText("Waiting for key...");
 	m_selected_label_button = lb;
+	if (!m_used_label_buttons.contains(lb)) m_used_label_buttons.append(lb);
 
 	m_input_listener = new InputListener(m_selected_device, this);
 
@@ -122,29 +215,34 @@ void Home::recieve_detected_keys(QList<QString> keys) {
 	
 	if (m_selected_label_button) {
 
+		m_selected_label_button->key_code.clear();
+
 		QString text;
 
 		for (QString k : keys) {
 			text.append(k);
 			text.append(" + ");
 		}
-		
 		text.chop(3);
-
+		
 		m_selected_label_button->button->setText(text);
+		m_selected_label_button->key_code = keys;
+
+		qDebug() << m_selected_label_button->key_code;
+
 		m_selected_label_button = nullptr;
 		m_input_listener = nullptr;
+		text.clear();
 	}
 }
 
 void Home::start() {
-	std::string HOME = getenv("HOME");
-	std::string NAME = "EVSIEVE-WRAPPER-DEVICE";
-	std::string COMMAND = "--input grab " + m_selected_device + " --map key:k btn:south --map key:l btn:east --map key:j btn:north --map key:i btn:west --map key:space btn:tr --map key:u btn:tl --map key:e btn:tr2 --map key:q btn:tl2 --map key:0 btn:start --map key:9 btn:select --map key:up btn:dpad_up --map key:down btn:dpad_down --map key:left btn:dpad_left --map key:right btn:dpad_right --map key:w:1 abs:y:-32768 --map key:s:1 abs:y:32767 --map key:w:0 abs:y:0 --map key:s:0 abs:y:0 --map key:a:1 abs:x:-32768 --map key:d:1 abs:x:32767 --map key:a:0 abs:x:0 --map key:d:0 abs:x:0 --output create-link=" + HOME + "/" + NAME + " name=" + NAME + " repeat=disable btn:south btn:east btn:west btn:north btn:tl btn:tr btn:tl2 btn:tr2 btn:start btn:select btn:dpad_up btn:dpad_down btn:dpad_left btn:dpad_right abs:y abs:x --output";
-	QStringList ARGUMENTS = QString::fromStdString(COMMAND).split(' ');
+
+	Remapper r;
+	QStringList arguments = QString("--input %1 %2 --output create-link=%3/EVSIEVE-WRAPPER-DEVICE name=EVSIEVE-WRAPPER-DEVICE repeat=disable btn:south btn:east btn:west btn:north btn:tl btn:tr btn:tl2 btn:tr2 btn:start btn:select btn:dpad_up btn:dpad_down btn:dpad_left btn:dpad_right abs:y abs:x abs:ry abs:rx btn:thumbl btn:thumbr btn:mode --output").arg(m_selected_device).arg(r.generate_arguments(m_used_label_buttons)).arg((getenv("HOME"))).split(' ');
 
 	m_proc = new QProcess(this);
-	m_proc->start("evsieve", ARGUMENTS);
+	m_proc->start("evsieve", arguments);
 	m_start_button->setDisabled(true);
 	m_stop_button->setDisabled(false);
 }

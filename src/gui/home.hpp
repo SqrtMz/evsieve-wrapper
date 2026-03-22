@@ -32,6 +32,7 @@ class Home : public QMainWindow {
 		QPushButton* m_stop_button;
 		InputListener* m_input_listener = nullptr;
 		LabelButton* m_selected_label_button = nullptr;
+		QList<LabelButton*> m_used_label_buttons;
 		
 	private slots:
 		void start_key_listener (LabelButton* lb);

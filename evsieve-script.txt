@@ -1,1 +1,48 @@
-evsieve --input grab /dev/input/by-id/usb-_2.4G_Wireless_Keyboard-event-kbd --map key:k btn:south --map key:l btn:east --map key:j btn:north --map key:i btn:west --map key:space btn:tr --map key:u btn:tl --map key:e btn:tr2 --map key:q btn:tl2 --map key:0 btn:start --map key:9 btn:select --map key:up btn:dpad_up --map key:down btn:dpad_down --map key:left btn:dpad_left --map key:right btn:dpad_right --map key:w:1 abs:y:-32768 --map key:s:1 abs:y:32767 --map key:w:0 abs:y:0 --map key:s:0 abs:y:0 --map key:a:1 abs:x:-32768 --map key:d:1 abs:x:32767 --map key:a:0 abs:x:0 --map key:d:0 abs:x:0 --output create-link=$HOME/virtual-controller name='TESTING STUFF' repeat=disable btn:south btn:east btn:west btn:north btn:tl btn:tr btn:tl2 btn:tr2 btn:start btn:select btn:dpad_up btn:dpad_down btn:dpad_left btn:dpad_right abs:y abs:x --output
+evsieve --input grab /dev/input/by-id/usb-_SK75_TMR-event-kbd --map key:k btn:south --map key:l btn:east --map key:j btn:north --map key:i btn:west --map key:space btn:tr --map key:u btn:tl --map key:e btn:tr2 --map key:q btn:tl2 --map key:0 btn:start --map key:9 btn:mode --map key:8 btn:select --map key:up btn:dpad_up --map key:down btn:dpad_down --map key:left btn:dpad_left --map key:right btn:dpad_right --map key:w:1 abs:y:-32768 --map key:s:1 abs:y:32767 --map key:w:0 abs:y:0 --map key:s:0 abs:y:0 --map key:a:1 abs:x:-32768 --map key:d:1 abs:x:32767 --map key:a:0 abs:x:0 --map key:d:0 abs:x:0 --map key:comma btn:thumbl --map key:g:1 abs:ry:-32768 --map key:b:1 abs:ry:32767 --map key:g:0 abs:ry:0 --map key:b:0 abs:ry:0 --map key:v:1 abs:rx:-32768 --map key:n:1 abs:rx:32767 --map key:v:0 abs:rx:0 --map key:n:0 abs:rx:0 --map key:dot btn:thumbr --output create-link=${HOME}/Desktop/virtual-controller name='TESTING STUFF' repeat=disable btn:south btn:east btn:west btn:north btn:tl btn:tr btn:tl2 btn:tr2 btn:start btn:select btn:dpad_up btn:dpad_down btn:dpad_left btn:dpad_right abs:y abs:x abs:ry abs:rx btn:thumbl btn:thumbr --output
+
+--hook key:leftctrl key:z send-key=abs:f1
+
+--input grab /dev/input/by-id/usb-_SK75_TMR-event-kbd \
+--map key:k btn:south \
+--map key:l btn:east \
+--map key:j btn:north \
+--map key:i btn:west \
+--map key:space btn:tr \
+--map key:u btn:tl \
+--map key:e btn:tr2 \
+--map key:q btn:tl2 \
+--map key:0 btn:start \
+--map key:9 btn:mode \
+--map key:8 btn:select \
+--map key:up btn:dpad_up \
+--map key:down btn:dpad_down \
+--map key:left btn:dpad_left \
+--map key:right btn:dpad_right \
+--map key:w:1 abs:y:-32768 \
+--map key:s:1 abs:y:32767 \
+--map key:w:0 abs:y:0 \
+--map key:s:0 abs:y:0 \
+--map key:a:1 abs:x:-32768 \
+--map key:d:1 abs:x:32767 \
+--map key:a:0 abs:x:0 \
+--map key:d:0 abs:x:0 \
+--map key:comma btn:thumbl \
+--map key:g:1 abs:ry:-32768 \
+--map key:b:1 abs:ry:32767 \
+--map key:g:0 abs:ry:0 \
+--map key:b:0 abs:ry:0 \
+--map key:v:1 abs:rx:-32768 \
+--map key:n:1 abs:rx:32767 \
+--map key:v:0 abs:rx:0 \
+--map key:n:0 abs:rx:0 \
+--map key:dot btn:thumbr \
+--output \
+create-link=${HOME}/Desktop/virtual-controller \
+name='TESTING STUFF' \
+repeat=disable \
+btn:south btn:east btn:west btn:north \
+btn:tl btn:tr btn:tl2 btn:tr2 \
+btn:start btn:select \
+btn:dpad_up btn:dpad_down btn:dpad_left btn:dpad_right \
+abs:y abs:x abs:ry abs:rx btn:thumbl btn:thumbr \
+--output
