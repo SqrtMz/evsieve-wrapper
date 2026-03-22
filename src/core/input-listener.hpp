@@ -18,6 +18,6 @@ class InputListener : public QThread {
 
 	private:
 		std::string m_device_path;
-		std::atomic<bool> m_running_flag = false;
+		std::atomic<bool> m_is_listening = false;
 		QList<QString> m_keys;
 };

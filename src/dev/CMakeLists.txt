@@ -1,0 +1,1 @@
+target_sources(${PROJECT_NAME} PRIVATE "virtual-controller.cpp" "virtual-controller.hpp" "virtual-device.cpp" "virtual-device.hpp")

@@ -176,7 +176,15 @@ void Home::reload_devices() {
 			std::string event_path = "/dev/input/" + (std::string)devices[i]->d_name;
 			int fd = ::open(event_path.c_str(), O_RDONLY | O_NONBLOCK);
 
-			if (libevdev_new_from_fd(fd, &dev) == 0) {
+			if (fd < 0) return;
+
+			int rc = libevdev_new_from_fd(fd, &dev);
+			if (rc < 0) {
+				::close(fd);
+				return;
+			}
+
+			if (rc == 0) {
 				std::string name = libevdev_get_name(dev);
 				std::string action_name = name + '\t' + event_path;
 
@@ -217,6 +225,11 @@ void Home::recieve_detected_keys(QList<QString> keys) {
 
 		m_selected_label_button->key_code.clear();
 
+		if (keys.size() < 1) {
+			m_selected_label_button->button->setText("No key assigned");
+			return;
+		}
+
 		QString text;
 
 		for (QString k : keys) {
@@ -224,11 +237,11 @@ void Home::recieve_detected_keys(QList<QString> keys) {
 			text.append(" + ");
 		}
 		text.chop(3);
-		
-		m_selected_label_button->button->setText(text);
-		m_selected_label_button->key_code = keys;
 
-		qDebug() << m_selected_label_button->key_code;
+		if (m_selected_label_button->target.left(3) == "abs") m_selected_label_button->button->setText(keys.at(0));
+		else m_selected_label_button->button->setText(text);
+
+		m_selected_label_button->key_code = keys;
 
 		m_selected_label_button = nullptr;
 		m_input_listener = nullptr;
@@ -238,19 +251,30 @@ void Home::recieve_detected_keys(QList<QString> keys) {
 
 void Home::start() {
 
-	Remapper r;
-	QStringList arguments = QString("--input %1 %2 --output create-link=%3/EVSIEVE-WRAPPER-DEVICE name=EVSIEVE-WRAPPER-DEVICE repeat=disable btn:south btn:east btn:west btn:north btn:tl btn:tr btn:tl2 btn:tr2 btn:start btn:select btn:dpad_up btn:dpad_down btn:dpad_left btn:dpad_right abs:y abs:x abs:ry abs:rx btn:thumbl btn:thumbr btn:mode --output").arg(m_selected_device).arg(r.generate_arguments(m_used_label_buttons)).arg((getenv("HOME"))).split(' ');
+	// Remapper r;
+	// QStringList arguments = QString("--input %1 %2 --output create-link=%3/EVSIEVE-WRAPPER-DEVICE name=EVSIEVE-WRAPPER-DEVICE repeat=disable btn:south btn:east btn:west btn:north btn:tl btn:tr btn:tl2 btn:tr2 btn:start btn:select btn:dpad_up btn:dpad_down btn:dpad_left btn:dpad_right abs:y abs:x abs:ry abs:rx btn:thumbl btn:thumbr btn:mode --output").arg(m_selected_device).arg(r.generate_arguments(m_used_label_buttons)).arg((getenv("HOME"))).split(' ');
 
-	m_proc = new QProcess(this);
-	m_proc->start("evsieve", arguments);
+	// m_proc = new QProcess(this);
+	// m_proc->start("evsieve", arguments);
+
+	m_vc_dev = new VirtualController(m_selected_device, this);
+
+	m_vc_dev->start();
 	m_start_button->setDisabled(true);
 	m_stop_button->setDisabled(false);
 }
 
 void Home::stop() {
-	m_proc->terminate();
-	m_start_button->setDisabled(false);
-	m_stop_button->setDisabled(true);
+	// m_proc->terminate();
+
+	if (m_vc_dev) {
+		m_vc_dev->stop();
+		delete m_vc_dev;
+		m_vc_dev = nullptr;
+
+		m_start_button->setDisabled(false);
+		m_stop_button->setDisabled(true);
+	}
 }
 
 void Home::closeEvent(QCloseEvent* event) {

@@ -2,6 +2,7 @@
 
 #include "label-button.hpp"
 #include "core/input-listener.hpp"
+#include "dev/virtual-controller.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -27,6 +28,7 @@ class Home : public QMainWindow {
 		std::string m_selected_device;
 		QMenu* m_file_menu;
 		QMenu* m_devices_menu;
+		VirtualController* m_vc_dev;
 		QProcess* m_proc;
 		QPushButton* m_start_button;
 		QPushButton* m_stop_button;

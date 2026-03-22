@@ -20,8 +20,7 @@ void InputListener::run() {
 	}
 
 	libevdev_grab(dev, LIBEVDEV_GRAB);
-	m_running_flag = true;
-	
+	m_is_listening = true;
 	do {
 		struct input_event ev;
 		rc = libevdev_next_event(dev, LIBEVDEV_READ_FLAG_NORMAL, &ev);
@@ -34,12 +33,13 @@ void InputListener::run() {
 			if (ev.type == 1 && ev.value == 0) {
 				emit send_detected_keys(m_keys);
 				m_keys.clear();
+				this->stop();
 				break;
 			}
 		}
 
 		QThread::msleep(10);
-	} while (m_running_flag);
+	} while (m_is_listening);
 
 	libevdev_grab(dev, LIBEVDEV_UNGRAB);
 	libevdev_free(dev);
@@ -47,5 +47,5 @@ void InputListener::run() {
 }
 
 void InputListener::stop() {
-	m_running_flag = false;
+	m_is_listening = false;
 }
