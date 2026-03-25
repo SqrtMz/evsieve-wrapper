@@ -19,10 +19,12 @@ class VirtualController : public VirtualDevice {
 
 	private:
 		// Didn't know how to make everything on the key buffer, so made as a "fuck it"
-		QList<int> m_lr_lj;	// ABS_X buffer
-		QList<int> m_ud_lj;	// ABS_Y buffer
-		QList<int> m_lr_rj;	// ABS_RX buffer
-		QList<int> m_ud_rj;	// ABS_RY buffer
+		QList<int> m_lr_lj;	// ABS_X buffer - 0 means left, 1 means right
+		QList<int> m_ud_lj;	// ABS_Y buffer - 0 means up, 1 means down
+		QList<int> m_lr_rj;	// ABS_RX buffer - 0 means left, 1 means right
+		QList<int> m_ud_rj;	// ABS_RY buffer - 0 means up, 1 means right
+
+		std::set<int> m_held_keys;
 
 		struct controller_events m_events;
 };

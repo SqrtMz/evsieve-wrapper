@@ -1,6 +1,6 @@
 #include "label-button.hpp"
 
-LabelButton::LabelButton(QString label_text, QString button_text, QString target, QWidget* parent) : QWidget(parent), target(target) {
+LabelButton::LabelButton(QString label_text, QString button_text, QWidget* parent) : QWidget(parent) {
 	label = new QLabel(label_text);
 	label->setAlignment(Qt::AlignCenter);
 	label->setMinimumWidth(200);
